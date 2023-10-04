@@ -19,7 +19,8 @@ Etapa 3: Após detalhar que o esquema seja detectado automaticamente, e que os d
 ![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/c6f656bd-288a-4f4c-88d1-8b9426a360b8)
 
 
-Finalmente, será apresnetado os códigos do desafio, em SQL, desenvolvidos no BigQuery. Como prévia, segue o scrip do primeiro desafio:
+Finalmente, será apresentado os códigos do desafio, em SQL, desenvolvidos no BigQuery. Como prévia, segue o script do primeiro desafio:
+Para essa questão, foi selecionado a coluna SalesOrderDetailID, depois feito um count() através da tabela sales_order_detail onde seja mostrado IDs que tenham contagem de pelo menos 3 IDs.
 ```
 /*Selecionando os SalesOrder que tenham 3 linhas de detalhes,
 ou seja, apareça mais de uma vez.*/ 
