@@ -61,11 +61,24 @@ LEFT JOIN strange-terra-384711.desafio_ROX.sales_customer c
 ON pp.BusinessEntityID = c.CustomerID
 WHERE sod.ModifiedDate >= TIMESTAMP("2011-01-01 00:00:00") AND sod.ModifiedDate < TIMESTAMP("2012-01-01 00:00:00");
 ```
-1. Power Bi: 
+1. Power Bi: Nessa ferramenta de visualização após a seleção das colunas pelo script acima, ficou fácil fazer o carregamento para a criação do dashboard. Portanto, a imagem a seguir mostra a criação básica de um dashboard com os dados selecionados. Recursos mais avançados não foram implementados, como ferramenta de dica e criação de ua lista de detalhamento, mas saliento que isso são técnicas as quais tenho conhecimento e que poderão ser implementadas em demais projetos. Outros recursos como o tratamento do dado no PowerQuery podem ser utilizados junto com o tratamend do dado em Python. O PowerBi é uma ferramenta poderosa.
+
+![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/f95a710d-3347-460e-88ec-10f6e6cc8399)
+
+Visualização final de um modelo de dashboard para o desafio.
+
+![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/2040b841-d6ca-4568-8aa1-77b71d9237df)
+
+   
 2. Looker Studio: Para complemento extra do desafio, fiz a integração da entidade gerada para com o Looker Studio, a plataforma de visualização integrada no GCP. A Imagem a seguir mostra a criação de alguns gráficos *apenas para ilustração da integração com a entidade criada*, como uma possibilidade de ingestáo do dados desde do BigQuery até a visualização.
 
 ![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/b197d828-4afa-497c-8b02-5071177eead2)
 
+Portanto, a o desafio final proposto foi desenvolvido usando GCP como ingestão dos dados, desde coleta, análise e visualização dos dados. Como mostra a figura a seguir:
+
+![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/ea39a748-faf6-454a-9ea2-676729b56f96)
+
+Estruturas mais complexas também podem ser implementadas, assim como ferramentas para o gerenciamento e a criação de pipelines. Por exemplo, Apache Airflow pode ser uma excelente ferramenta de pipelines para executar tarefas e rotinas em projetos. Destaco também a utilização de outras linguagem para leitura, tratamento e carregamento dos dados como PySpark. 
 
 # Atividade extra - PySpark
 Sabendo que que o Apache Spark é um poderoso framework de processamento de dados e, como atuo diariamente com PySpark, descidi gerar os mesmos scripts gerados no BigQuery na linguagem PySpark. Essa linguagem oferece eficiência de escrita de ETL de forma simples, como mostrado a seguir:
