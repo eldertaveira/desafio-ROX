@@ -25,7 +25,46 @@ https://console.cloud.google.com/bigquery?sq=750614208518:2bd505e445904be1a2ea99
 # Visualização dos dados
 Para a visualização dos dados, optei em criar uma entidade com os dados, ou seja, relacionei através de joins as tabelas do desafio e selecionei as colunas mais relevantes para extrair um arquivo e conectar com o Power BI. Essa mesma tarefa poderia ser feita automazida, fazendo o carregamento direto do arquivo na cloud com o PBI.
 
-O código implementado para criar a entidade está no BigQuery, ao final dos desafios: https://console.cloud.google.com/bigquery?sq=750614208518:2bd505e445904be1a2ea99b9b3e421da
+O código implementado para criar a entidade está no BigQuery, é mostrado logo a seguir, e também consta no final do desafio: https://console.cloud.google.com/bigquery?sq=750614208518:2bd505e445904be1a2ea99b9b3e421da . 
+```
+SELECT 
+sod.SalesOrderID
+, sod.SalesOrderDetailID
+, sod.OrderQty
+, sod.ProductID
+, sod.UnitPrice
+, sod.ModifiedDate
+, p.Name
+, p.Color
+, p.SafetyStockLevel
+, p.ListPrice
+, p.DaysToManufacture
+, p.Class
+, p.SellStartDate
+, p.SellEndDate
+, soh.OrderDate
+, soh.CustomerID
+, pp.PersonType
+, pp.FirstName
+, pp.LastName
+, c.TerritoryID
+FROM strange-terra-384711.desafio_ROX.sales_order_detail sod
+LEFT JOIN strange-terra-384711.desafio_ROX.special_offer_product sop 
+ON sod.SpecialOfferID = sop.SpecialOfferID
+LEFT JOIN strange-terra-384711.desafio_ROX.product p 
+ON sop.ProductID = p.ProductID
+LEFT JOIN strange-terra-384711.desafio_ROX.sales_order_header soh 
+ON sod.SalesOrderID = soh.SalesOrderID
+LEFT JOIN strange-terra-384711.desafio_ROX.person_person pp 
+ON soh.CustomerID = pp.BusinessEntityID
+LEFT JOIN strange-terra-384711.desafio_ROX.sales_customer c 
+ON pp.BusinessEntityID = c.CustomerID
+WHERE sod.ModifiedDate >= TIMESTAMP("2011-01-01 00:00:00") AND sod.ModifiedDate < TIMESTAMP("2012-01-01 00:00:00");
+```
+1. Power Bi: 
+2. Looker Studio: Para complemento extra do desafio, fiz a integração da entidade gerada para com o Looker Studio, a plataforma de visualização integrada no GCP. A Imagem a seguir mostra a criação de alguns gráficos *apenas para ilustração da integração com a entidade criada*, como uma possibilidade de ingestáo do dados desde do BigQuery até a visualização.
+
+![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/b197d828-4afa-497c-8b02-5071177eead2)
 
 
 # Atividade extra - PySpark
