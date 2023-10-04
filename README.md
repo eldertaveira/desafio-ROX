@@ -19,7 +19,19 @@ Etapa 3: Após detalhar que o esquema seja detectado automaticamente, e que os d
 ![image](https://github.com/eldertaveira/desafio-ROX/assets/142034363/c6f656bd-288a-4f4c-88d1-8b9426a360b8)
 
 
-Link do scrip do desafio disponível em:
+Finalmente, será apresnetado os códigos do desafio, em SQL, desenvolvidos no BigQuery. Como prévia, segue o scrip do primeiro desafio:
+```
+/*Selecionando os SalesOrder que tenham 3 linhas de detalhes,
+ou seja, apareça mais de uma vez.*/ 
+SELECT DISTINCT 
+SalesOrderDetailID
+, COUNT(*)
+FROM strange-terra-384711.desafio_ROX.sales_order_detail
+GROUP BY 1
+HAVING COUNT(*) >= 3;
+```
+
+Link do script do desafio disponível em:
 https://console.cloud.google.com/bigquery?sq=750614208518:2bd505e445904be1a2ea99b9b3e421da
 
 # Visualização dos dados
